@@ -1,5 +1,10 @@
 # QEMU arm emulation demo
 
+# Dependencies
+- gnu-rm for the compiler tools.
+ See: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
+- build-essential for make etc.
+
 # Compile and link
 The following source targets a Versatile Platform Baseboard
 using an ARM926ej-s processor.

@@ -13,6 +13,9 @@ ELF = qemuboot.elf
 BIN = qemuboot.bin
 HEX = qemuboot.hex
 
+.PHONY: all clean dump
+
+all: $(BIN) $(HEX)
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -30,9 +33,6 @@ $(HEX): $(ELF)
 	$(OBJCOPY) -O ihex $< $@
 
 
-.PHONY: all clean dump
-
-all: $(ELF) $(BIN) $(HEX)
 
 clean:
 	rm -f  *.o *.bin *.hex *.elf

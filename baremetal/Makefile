@@ -13,6 +13,11 @@ ELF = baremetal.elf
 BIN = baremetal.bin
 HEX = baremetal.hex
 
+
+.PHONY: all clean dump
+
+all: $(BIN) $(HEX)
+
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
@@ -28,10 +33,6 @@ $(BIN): $(ELF)
 $(HEX): $(ELF)
 	$(OBJCOPY) -O ihex $< $@
 
-
-.PHONY: all clean dump
-
-all: $(ELF) $(BIN) $(HEX)
 
 clean:
 	rm -f  *.o *.bin *.hex *.elf

@@ -2,21 +2,16 @@ CC=arm-none-eabi-gcc
 CFLAGS=-g -mcpu=arm926ej-s
 
 AS=arm-none-eabi-as
-
 LD=arm-none-eabi-ld
-LDMAP=hw-boot.ld
-
 OBJCOPY=arm-none-eabi-objcopy
+OBJDUMP=arm-none-eabi-objdump
 
+LDMAP=hw-boot.ld
 DEPS =
 OBJS = hw-entry.o hw-startup.o
 ELF = baremetal.elf
 BIN = baremetal.bin
 HEX = baremetal.hex
-
-.PHONY: all
-all: $(ELF) $(BIN) $(HEX)
-
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -34,6 +29,12 @@ $(HEX): $(ELF)
 	$(OBJCOPY) -O ihex $< $@
 
 
-.PHONY: clean
+.PHONY: all clean dump
+
+all: $(ELF) $(BIN) $(HEX)
+
 clean:
 	rm -f  *.o *.bin *.hex *.elf
+
+dump: $(ELF)
+	$(OBJDUMP) -d $(ELF)

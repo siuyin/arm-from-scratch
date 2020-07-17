@@ -2,20 +2,16 @@ CC=arm-none-eabi-gcc
 CFLAGS=-g -mcpu=arm926ej-s
 
 AS=arm-none-eabi-as
-
 LD=arm-none-eabi-ld
-LDMAP=qemuboot.ld
-
 OBJCOPY=arm-none-eabi-objcopy
+OBJDUMP=arm-none-eabi-objdump
 
+LDMAP=qemuboot.ld
 DEPS =
 OBJS = hw2-entry.o startup.o
 ELF = qemuboot.elf
 BIN = qemuboot.bin
 HEX = qemuboot.hex
-
-.PHONY: all
-all: $(ELF) $(BIN) $(HEX)
 
 
 %.o: %.c $(DEPS)
@@ -34,6 +30,12 @@ $(HEX): $(ELF)
 	$(OBJCOPY) -O ihex $< $@
 
 
-.PHONY: clean
+.PHONY: all clean dump
+
+all: $(ELF) $(BIN) $(HEX)
+
 clean:
 	rm -f  *.o *.bin *.hex *.elf
+
+dump: $(ELF)
+	$(OBJDUMP) -d $(ELF)

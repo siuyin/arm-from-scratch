@@ -8,7 +8,7 @@
 # Standard CMSIS header files
 - core_cm0plus.h : includes core_cmFunc.h and core_cmInstr.h
 - core_cmFunc.h
-- core_cmInstr.h
+- core_cmInstr.h : includes cmsis_gcc.h
 
 # Files to be implemented by the integrator / developer
 - MKL05Z4.ld : linker script for GCC

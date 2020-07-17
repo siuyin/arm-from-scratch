@@ -1,6 +1,11 @@
-#ifndef SYSTEM_MKL05Z4_H_
-#define SYSTEM_MKL05Z4_H_ 
-
 #include <stdint.h>
+#include "MKL05Z4.h"
 
-#endif
+uint32_t SystemCoreClock;
+
+void SystemInit(void) {
+	SystemCoreClock = DEFAULT_SYSTEM_CLOCK;
+	// do other system initialisation then,
+	// call main() here
+}
+

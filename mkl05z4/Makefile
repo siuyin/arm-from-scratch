@@ -8,7 +8,7 @@ OBJDUMP=arm-none-eabi-objdump
 
 LDMAP=MKL05Z4.ld
 DEPS =
-OBJS = startup_MKL05Z4.o system_MKL05Z4.o entry.o
+OBJS = startup_MKL05Z4.o system_MKL05Z4.o
 ELF = hello-mkl05z4.elf
 BIN = hello-mkl05z4.bin
 HEX = hello-mkl05z4.hex

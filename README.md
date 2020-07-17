@@ -1,11 +1,16 @@
 # Bare metal and QEMU arm emulation demo
 
-# Dependencies
+## Dependencies
 - gnu-rm for the compiler tools.
  See: https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
 - build-essential for make etc.
 
-# Compile and link
+## Bare metal
+See `baremetal` folder and its Makefile.
+
+Run `make` to make bin and hex files. `make dump` to see a disassembly.
+
+## QEMU Compile and link
 The following source targets a Versatile Platform Baseboard
 using an ARM926ej-s processor.
 
@@ -18,7 +23,7 @@ arm-none-eabi-ld -T qemuboot.ld hw2-entry.o startup.o -o qemuboot.elf
 
 arm-none-eabi-objcopy -O binary qemuboot.elf qemuboot.bin
 ```
-# Run
+## QEMU Run
 QEMU can emulate the Versatile Platform Baseboard as follows:
 ```
 qemu-system-arm -M versatilepb -nographic -kernel qemuboot.bin

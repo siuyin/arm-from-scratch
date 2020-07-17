@@ -1,4 +1,4 @@
-# QEMU arm emulation demo
+# Bare metal and QEMU arm emulation demo
 
 # Dependencies
 - gnu-rm for the compiler tools.

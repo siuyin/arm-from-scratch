@@ -1,6 +1,6 @@
 @ startup_MKL05Z4.s is the code that runs first in the system.
 @
-@ This is a comment is arm 32-bit assembler.
+@ This is a comment in arm 32-bit assembler.
 @ The comment is valid through the end of the line.
 @
 @ A good reference is to search for "useful assembler directives and macros for the gnu assembler"
@@ -17,13 +17,13 @@
 	.arch	armv6-m		@ Targetting the arm v6-m architecture.
 
 	.section .stack		@ Here is the initial software stack.
-	.align 3		@ It must start on a address that is divisible by 2^3 = 8.
+	.align 3		@ It must start on an address that is divisible by 2^3 = 8.
 	.equ Stack_Size, 0x80	@ Let's start with a 2K byte stack.
 	.globl	__StackTop	@ These declare global variables.
 	.globl	__StackLimit
-__StackLimit:			@ And there are actually defined here.
+__StackLimit:			@ And __StackLimit is actually defined here.
 	.space	Stack_Size				@ Reserve the number of bytes for the stack.
-	.size	__StackLimit, . - __StackLimit		@ .size sets the size of the __StackLimit pointer to n bytes.
+	.size	__StackLimit, . - __StackLimit		@ .size sets the size of the __StackLimit pointer to n bytes. Think sizeof(x) in c.
 __StackTop:
 	.size __StackTop, . - __StackTop
 
@@ -43,3 +43,5 @@ __isr_vector:
 Reset_Handler:					@ This is the actual Reset_Handler code.
 	BL	SystemInit			@ It Branch Links (goto) SystemInit. See reference on developer.arm.com for assembler language details.
 	B	.				@ A safety feature: branch to itself. Should the Program Counter land here, it will stay locked there.
+
+	.end

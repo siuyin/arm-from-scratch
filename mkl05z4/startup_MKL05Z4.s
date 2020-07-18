@@ -33,6 +33,7 @@ __StackTop:
 __isr_vector:
 	.long	__StackTop			@ According to KL05 sub-family reference, page 49, address 0x0000_0000 contains the initial stack pointer.
 	.long	Reset_Handler			@ Address 0x0000_0004 has the initial program counter. I have pointed it to Reset_Handler
+	.long	0				@ TODO: add other vectors here. In MKL05Z4 there a a total of 48 vectors defined, this is vector number 2, with the __StackTop as vector number 0.
 
 	.section .text.Reset_Handler		@ .text is where user code goes. Here is the Reset_Handler code.
 	.thumb					@ It users arm thumb instructions.
